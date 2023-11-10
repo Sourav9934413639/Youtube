@@ -1,72 +1,8 @@
-// import { Box, Stack, Typography } from '@mui/material'
-// import React, { useEffect, useState } from 'react'
-// import ReactPlayer from 'react-player'
-// import { Link, useParams } from 'react-router-dom'
-// import fetchRequest from '../utils/fetchRequest'
-// import { CheckCircle } from '@mui/icons-material'
-// import Videos from './Videos'
-
-// const VideoDetail = () => {
-//   const {id}=useParams();
-//   const [videoDetail,setVideoDetail]=useState(null);
-//   const [relatedVideos,setRelatedVideos]=useState([]);
-
-//   useEffect(()=>{
-//     fetchRequest(`videos?part=snippet,statistics&id=${id}`)
-//     .then((res)=>setVideoDetail(res.items[0]))
-//     fetchRequest(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-//     .then((res)=>setRelatedVideos(res.items))
-//   },[id])
-//   if(!videoDetail) return 'Loading...';
-//   if(!relatedVideos) return 'Loading...';
-//   const {snippet:{title,channelTitle,channelId},statistics:{viewCount,likeCount}}=videoDetail;
-
-//   return (
-//     <Box minHeight='95vh' sx={{border:'1px solid green'}}>
-//         <Stack direction={{xs:'column',md:'row'}}>
-//         <Box flex={1}>
-//           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
-//             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} controls width='100%' height='75vh' />
-//           </Box>
-//           <Typography color="white" variant="subtitle1" fontWeight="bold" p={2}>
-//               {title}
-//           </Typography>
-//           <Stack direction="row" justifyContent="space-between"  px="1rem">
-//           <Link to={`/channel/${channelId}`}>
-//           <Typography color="white" sx={{sm:'subtitle1',md:'h6'}}>
-//             {channelTitle}
-//             <CheckCircle sx={{fontSize:'12px',color:'grey',marginLeft:'0.5rem'}} />
-//           </Typography>
-//           </Link>
-//           <Stack color='white' direction="row" gap={2} alignItems='center' sx={{sm:'subtitle1',md:'h6'}}>
-//             <Typography>
-//               {parseInt(viewCount).toLocaleString()} views
-//             </Typography>
-//             <Typography>
-//               {parseInt(likeCount).toLocaleString()} likes
-//             </Typography>
-
-//           </Stack>
-//           </Stack>
-//         </Box>
-//         <Box mx='auto'>
-//            <Videos videos={relatedVideos} direction="column" height="auto"/>
-//         </Box>
-//         </Stack>
-        
-//     </Box>
-//   )
-// }
-
-// export default VideoDetail
-
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
-// import { Videos, Loader } from "./";
 import fetchRequest from "../utils/fetchRequest";
 import Videos from "./Videos";
 import Loader from "./Loader";
